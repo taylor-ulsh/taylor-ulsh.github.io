@@ -3,16 +3,10 @@
 
   // --- Language toggle ---
   // The first choice is made by the small script in index.html's <head>.
-  var descriptions = {
-    da: 'Taylor Ulsh: personlig hjemmeside med projekter, lab-notesbog og kontakt.',
-    en: 'Taylor Ulsh: personal website with projects, a lab notebook and contact details.'
-  };
   var buttons = document.querySelectorAll('[data-set-lang]');
-  var description = document.querySelector('meta[name="description"]');
 
   function applyLang(lang) {
     root.lang = lang;
-    description.content = descriptions[lang];
     buttons.forEach(function (button) {
       button.setAttribute('aria-pressed', String(button.dataset.setLang === lang));
     });
