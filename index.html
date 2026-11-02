@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="da">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Taylor Ulsh</title>
+  <meta name="description" content="Taylor Ulsh: personlig hjemmeside med projekter, lab-notesbog og kontakt.">
+  <meta name="theme-color" content="#0a0c10">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="fonts/ibm-plex-sans-400.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/ibm-plex-mono-400.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="css/style.css">
+  <script>
+    // runs before the page is drawn, so the wrong language never flashes up
+    // a saved choice wins; otherwise the first danish or english browser language; otherwise english
+    (function () {
+      var lang = null;
+      try {
+        var saved = localStorage.getItem('lang');
+        if (saved === 'da' || saved === 'en') lang = saved;
+      } catch (e) {}
+      if (!lang) {
+        var prefs = navigator.languages || [navigator.language || ''];
+        for (var i = 0; i < prefs.length && !lang; i++) {
+          var code = String(prefs[i]).slice(0, 2).toLowerCase();
+          if (code === 'da' || code === 'en') lang = code;
+        }
+      }
+      document.documentElement.lang = lang || 'en';
+      document.documentElement.classList.add('js');
+    })();
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#main"><span lang="da">Gå til indhold</span><span lang="en">Skip to content</span></a>
+
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a class="logo" href="#top">~/ulsh<span class="accent">.dk_</span></a>
+      <nav class="site-nav" aria-label="Menu">
+        <a href="#about"><span lang="da">Om mig</span><span lang="en">About</span></a>
+        <a href="#lab"><span lang="da">Lab-notesbog</span><span lang="en">Lab notebook</span></a>
+        <a href="#mystery"><span lang="da">Mysterie</span><span lang="en">Mystery</span></a>
+        <a href="#contact"><span lang="da">Kontakt</span><span lang="en">Contact</span></a>
+      </nav>
+      <div class="lang-toggle" role="group" aria-label="Sprog / Language">
+        <button type="button" data-set-lang="da" aria-label="Dansk">DA</button>
+        <span aria-hidden="true">|</span>
+        <button type="button" data-set-lang="en" aria-label="English">EN</button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="top">
+      <div class="wrap hero-grid">
+        <div>
+          <p class="section-label" lang="da">// hej, jeg er</p>
+          <p class="section-label" lang="en">// hi, I'm</p>
+          <h1>Taylor Ulsh</h1>
+          <p class="lede" lang="da">Kandidatstuderende i International Business på Aalborg Universitet med fokus på Business Data Science og en baggrund inden for finans. Jeg kan godt lide at omsætte forretningsspørgsmål til dataforespørgsler, og her samler jeg de ting, jeg bygger.</p>
+          <p class="lede" lang="en">Master's student in International Business at Aalborg University, specialising in Business Data Science, with a background in finance. I like turning business questions into queries, and this is where I keep the things I build.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#lab"><span lang="da">Se lab-notesbogen</span><span lang="en">See the lab notebook</span></a>
+            <a class="btn" href="#contact"><span lang="da">Kontakt mig</span><span lang="en">Contact me</span></a>
+          </div>
+        </div>
+
+        <figure class="sql-window play" id="sql-window">
+          <div class="sql-bar">
+            <span class="dots" aria-hidden="true"><i></i><i></i><i></i></span>
+            <span class="sql-title">whoami.sql</span>
+            <button type="button" class="sql-run" id="sql-run"><span aria-hidden="true">▶</span> <span lang="da">Kør</span><span lang="en">Run</span></button>
+          </div>
+          <pre class="sql-code"><code><span class="line" style="--i:0"><span class="c" lang="da">-- Hvem er Taylor?</span><span class="c" lang="en">-- Who is Taylor?</span></span><span class="line" style="--i:1"><span class="k">SELECT</span> field, value</span><span class="line" style="--i:2"><span class="k">FROM</span>   people</span><span class="line" style="--i:3"><span class="k">WHERE</span>  name = <span class="s">'Taylor Ulsh'</span>;</span></code></pre>
+          <div class="sql-results">
+            <table>
+              <caption class="visually-hidden"><span lang="da">Resultat af forespørgslen om Taylor</span><span lang="en">Result of the query about Taylor</span></caption>
+              <thead>
+                <tr><th scope="col">field</th><th scope="col">value</th></tr>
+              </thead>
+              <tbody>
+                <tr><th scope="row">name</th><td>Taylor Ulsh</td></tr>
+                <tr><th scope="row">role</th><td><span lang="da">Kandidatstuderende, International Business, AAU</span><span lang="en">MSc student, International Business, AAU</span></td></tr>
+                <tr><th scope="row">also</th><td><span lang="da">Selvstændig system- og datakonsulent</span><span lang="en">Self-employed systems and data consultant</span></td></tr>
+                <tr><th scope="row">based_in</th><td>Aalborg</td></tr>
+              </tbody>
+            </table>
+            <p class="sql-status"><span lang="da">4 rækker returneret</span><span lang="en">4 rows returned</span><span class="cursor" aria-hidden="true"></span></p>
+          </div>
+        </figure>
+      </div>
+    </section>
+
+    <section class="section" id="about">
+      <div class="wrap narrow">
+        <p class="section-label">SELECT * FROM background;</p>
+        <h2><span lang="da">Om mig</span><span lang="en">About</span></h2>
+        <p lang="da">Jeg kommer oprindeligt fra St. Helena i Californien. Jeg kom første gang til Danmark som 16-årig som udvekslingselev gennem Rotary, og lige siden har jeg haft lyst til at bo her. Undervejs boede jeg omkring ti år i Bellingham i staten Washington og tog min bachelor i regnskab (Accountancy) på Northern Arizona University i Flagstaff.</p>
+        <p lang="en">I'm originally from St. Helena, California. I first came to Denmark at 16 as a Rotary Youth Exchange student, and I've wanted to live here ever since. Along the way, I lived in Bellingham, Washington, for about ten years and earned my bachelor's degree in Accountancy from Northern Arizona University in Flagstaff.</p>
+        <p lang="da">Min baggrund er inden for finans, men det er datasiden, jeg brænder mest for. I mine forskellige job har jeg indført mange nye arbejdsgange. Blandt andet gik vi fra håndskrevne følgeskemaer og manuelle rutiner til en fuldt digital proces, så mit team kunne arbejde 100% hjemmefra – hvilket ikke havde været muligt før.</p>
+        <p lang="en">My background is in finance, but it's the data side I enjoy most. I've brought in a lot of new workflows across my jobs. One of them took us from handwritten cover sheets and workflows to a completely digital process, so my team could work fully remotely, which hadn't been possible before.</p>
+        <p lang="da">Jeg har også opbygget mange Excel-værktøjer, lige fra kundeverifikation og beregning af drikkepenge til regneark til optælling og afstemning af hovedkassen på et kasino.</p>
+        <p lang="en">I've also built many Excel tools, from client verification and gratuity calculations to spreadsheets for counting and balancing a casino's main bank.</p>
+        <p lang="da">Ved siden af mine studier arbejder jeg som selvstændig system- og datakonsulent.</p>
+        <p lang="en">Alongside my studies, I work as a self-employed systems and data consultant.</p>
+      </div>
+    </section>
+
+    <section class="section section-alt" id="lab">
+      <div class="wrap">
+        <p class="section-label">SELECT * FROM projects;</p>
+        <h2><span lang="da">Lab-notesbog</span><span lang="en">Lab notebook</span></h2>
+        <p class="section-intro" lang="da">Det, jeg bygger og afprøver. Nogle ting er i gang, andre er stadig kun en idé.</p>
+        <p class="section-intro" lang="en">What I'm building and trying out. Some of it is under way, and some is still just an idea.</p>
+
+        <div class="lab-grid">
+          <article class="lab-card">
+            <div class="lab-meta">
+              <span class="lab-id">LAB-001</span>
+              <span class="badge badge-progress"><span lang="da">I gang</span><span lang="en">In progress</span></span>
+            </div>
+            <h3>ulsh.dk</h3>
+            <p lang="da">Denne hjemmeside: ren HTML, CSS og JavaScript uden framework, på to sprog og hostet på GitHub Pages.</p>
+            <p lang="en">This website: plain HTML, CSS and JavaScript with no framework, in two languages, hosted on GitHub Pages.</p>
+          </article>
+
+          <article class="lab-card">
+            <div class="lab-meta">
+              <span class="lab-id">LAB-002</span>
+              <span class="badge badge-planned"><span lang="da">Planlagt</span><span lang="en">Planned</span></span>
+            </div>
+            <h3><span lang="da">SQL-mysteriespil</span><span lang="en">SQL mystery game</span></h3>
+            <p lang="da">Et detektivspil, hvor sporene ligger i en database, og SQL er dit eneste værktøj.</p>
+            <p lang="en">A detective game where the clues live in a database and SQL is your only tool.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="mystery">
+      <div class="wrap">
+        <div class="case-file">
+          <div>
+            <p class="section-label"><span lang="da">-- sag_001</span><span lang="en">-- case_001</span></p>
+            <h2><span lang="da">Noget er galt i databasen</span><span lang="en">Something is wrong in the database</span></h2>
+            <p lang="da">Et SQL-mysteriespil er på vej. Du får en database og en uopklaret sag, og svaret skal du selv finde med dine forespørgsler.</p>
+            <p lang="en">A SQL mystery game is on its way. You get a database and an unsolved case, and your own queries have to find the answer.</p>
+            <p class="case-note"><span class="badge badge-planned"><span lang="da">Planlagt</span><span lang="en">Planned</span></span> <span lang="da">Ingen udgivelsesdato endnu.</span><span lang="en">No release date yet.</span></p>
+          </div>
+          <pre class="case-code" aria-hidden="true"><code><span class="k">SELECT</span> *
+<span class="k">FROM</span>   suspects
+<span class="k">WHERE</span>  alibi <span class="k">IS NULL</span>;
+
+<span class="c" lang="da">-- 0 rækker. Indtil videre.</span><span class="c" lang="en">-- 0 rows. So far.</span></code></pre>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-alt" id="contact">
+      <div class="wrap">
+        <p class="section-label">INSERT INTO messages;</p>
+        <h2><span lang="da">Kontakt</span><span lang="en">Contact</span></h2>
+        <div class="contact-grid">
+          <ul class="contact-links">
+            <li><a href="https://www.linkedin.com/in/ulsh" rel="noopener"><span class="contact-key">linkedin</span> linkedin.com/in/ulsh</a></li>
+            <li><a href="https://github.com/taylor-ulsh" rel="noopener"><span class="contact-key">github</span> github.com/taylor-ulsh</a></li>
+          </ul>
+
+          <!-- Static sites can't send mail, so Formspree delivers the form. -->
+          <form class="contact-form" id="contact-form" action="https://formspree.io/f/xwvwapeg" method="POST">
+            <div class="field">
+              <label for="cf-name"><span lang="da">Navn</span><span lang="en">Name</span></label>
+              <input id="cf-name" name="name" type="text" autocomplete="name" required>
+            </div>
+            <div class="field">
+              <label for="cf-email"><span lang="da">E-mail</span><span lang="en">Email</span></label>
+              <input id="cf-email" name="email" type="email" autocomplete="email" inputmode="email" required>
+            </div>
+            <div class="field">
+              <label for="cf-message"><span lang="da">Besked</span><span lang="en">Message</span></label>
+              <textarea id="cf-message" name="message" rows="5" required></textarea>
+            </div>
+            <!-- Spam trap: hidden from people, and bots that fill it in get rejected. -->
+            <div class="trap" aria-hidden="true">
+              <label for="cf-website">Website</label>
+              <input id="cf-website" name="_gotcha" type="text" tabindex="-1" autocomplete="off">
+            </div>
+            <button class="btn btn-primary" type="submit"><span lang="da">Send besked</span><span lang="en">Send message</span></button>
+            <div class="form-status" aria-live="polite">
+              <p data-state="sending" hidden><span lang="da">Sender…</span><span lang="en">Sending…</span></p>
+              <p data-state="sent" class="ok" hidden><span lang="da">Tak! Din besked er sendt.</span><span lang="en">Thanks! Your message has been sent.</span></p>
+              <p data-state="error" class="bad" hidden><span lang="da">Beskeden kunne ikke sendes. Prøv igen, eller skriv til mig på LinkedIn.</span><span lang="en">Your message couldn't be sent. Please try again, or write to me on LinkedIn.</span></p>
+            </div>
+            <p class="form-note" lang="da">Din besked sendes via tjenesten Formspree og bruges kun til at svare dig.</p>
+            <p class="form-note" lang="en">Your message is sent through the Formspree service and only used to reply to you.</p>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap footer-inner">
+      <span>© 2026 Taylor Ulsh · ulsh.dk</span>
+      <span lang="da">Ingen cookies og ingen sporing. Dit sprogvalg gemmes kun i din egen browser.</span>
+      <span lang="en">No cookies and no tracking. Your language choice is only stored in your own browser.</span>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
