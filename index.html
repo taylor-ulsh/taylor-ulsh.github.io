@@ -181,11 +181,8 @@
               <label for="cf-message"><span lang="da">Besked</span><span lang="en">Message</span></label>
               <textarea id="cf-message" name="message" rows="5" required></textarea>
             </div>
-            <!-- Spam trap: hidden from people, and bots that fill it in get rejected. -->
-            <div class="trap" aria-hidden="true">
-              <label for="cf-website">Website</label>
-              <input id="cf-website" name="_gotcha" type="text" tabindex="-1" autocomplete="off">
-            </div>
+            <!-- Spam trap: display:none so browser autofill skips it, but bots still fill it in and get rejected. -->
+            <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true">
             <button class="btn btn-primary" type="submit"><span lang="da">Send besked</span><span lang="en">Send message</span></button>
             <div class="form-status" aria-live="polite">
               <p data-state="sending" hidden><span lang="da">Sender…</span><span lang="en">Sending…</span></p>

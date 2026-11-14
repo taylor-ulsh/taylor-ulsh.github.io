@@ -213,7 +213,6 @@ input, textarea {
 }
 textarea { resize: vertical; }
 input:focus, textarea:focus { outline: 2px solid var(--accent); outline-offset: 0; border-color: transparent; }
-.trap { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
 .form-status p { margin: 14px 0 0; font-size: 15px; color: var(--muted); }
 .form-status .ok { color: var(--accent); }
 .form-status .bad { color: var(--red); }
