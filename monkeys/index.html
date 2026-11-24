@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="da">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Aber · Taylor Ulsh</title>
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#0a0c10">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../css/style.css">
+  <script>
+    // same language choice as the main page
+    (function () {
+      var lang = null;
+      try {
+        var saved = localStorage.getItem('lang');
+        if (saved === 'da' || saved === 'en') lang = saved;
+      } catch (e) {}
+      if (!lang) {
+        var prefs = navigator.languages || [navigator.language || ''];
+        for (var i = 0; i < prefs.length && !lang; i++) {
+          var code = String(prefs[i]).slice(0, 2).toLowerCase();
+          if (code === 'da' || code === 'en') lang = code;
+        }
+      }
+      document.documentElement.lang = lang || 'en';
+      document.documentElement.classList.add('js');
+    })();
+  </script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a class="logo" href="../">~/ulsh<span class="accent">.dk_</span></a>
+      <nav class="site-nav" aria-label="Menu">
+        <a href="../#about"><span lang="da">Om mig</span><span lang="en">About</span></a>
+        <a href="../#lab"><span lang="da">Lab-notesbog</span><span lang="en">Lab notebook</span></a>
+        <a href="../#mystery"><span lang="da">Mysterie</span><span lang="en">Mystery</span></a>
+        <a href="../#contact"><span lang="da">Kontakt</span><span lang="en">Contact</span></a>
+      </nav>
+      <div class="lang-toggle" role="group" aria-label="Sprog / Language">
+        <button type="button" data-set-lang="da" aria-label="Dansk">DA</button>
+        <span aria-hidden="true">|</span>
+        <button type="button" data-set-lang="en" aria-label="English">EN</button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <div>
+          <p class="section-label">SELECT * FROM pets WHERE species = 'monkey';</p>
+          <h1><span lang="da">Aber 🐒</span><span lang="en">Monkeys 🐒</span></h1>
+          <p class="lede" lang="da">Vidste du, at små egernaber kan blive op til 25 år gamle, genkende deres ejers ansigt og lære at åbne køleskabet på under en uge? Flere og flere danskere overvejer en abe som kæledyr, men reglerne er overraskende enkle, når man ved, hvor man skal kigge.</p>
+          <p class="lede" lang="en">Did you know that small squirrel monkeys can live for up to 25 years, recognise their owner's face, and learn to open the fridge in under a week? More and more people are thinking about a monkey as a pet, and the rules turn out to be surprisingly simple once you know where to look.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" rel="noopener noreferrer"><span lang="da">Klik her: sådan får du en abe som kæledyr</span><span lang="en">Click here: how to get a monkey as a pet</span></a>
+            <a class="btn" href="../"><span lang="da">Tilbage til forsiden</span><span lang="en">Back to the main page</span></a>
+          </div>
+        </div>
+
+        <figure class="sql-window">
+          <div class="sql-bar">
+            <span class="dots" aria-hidden="true"><i></i><i></i><i></i></span>
+            <span class="sql-title">monkeys.sql</span>
+          </div>
+          <div class="sql-results">
+            <table>
+              <caption class="visually-hidden"><span lang="da">Fakta om aber</span><span lang="en">Monkey facts</span></caption>
+              <thead>
+                <tr><th scope="col">field</th><th scope="col">value</th></tr>
+              </thead>
+              <tbody>
+                <tr><th scope="row">species</th><td><span lang="da">Egernabe</span><span lang="en">Squirrel monkey</span></td></tr>
+                <tr><th scope="row">lifespan</th><td><span lang="da">Op til 25 år</span><span lang="en">Up to 25 years</span></td></tr>
+                <tr><th scope="row">cuteness</th><td>100%</td></tr>
+                <tr><th scope="row">fridge_skills</th><td><span lang="da">Bekymrende</span><span lang="en">Concerning</span></td></tr>
+              </tbody>
+            </table>
+            <p class="sql-status"><span lang="da">4 rækker returneret</span><span lang="en">4 rows returned</span><span class="cursor" aria-hidden="true"></span></p>
+          </div>
+        </figure>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap footer-inner">
+      <span>© 2026 Taylor Ulsh · ulsh.dk</span>
+      <span lang="da">Ingen cookies og ingen sporing. Dit sprogvalg gemmes kun i din egen browser.</span>
+      <span lang="en">No cookies and no tracking. Your language choice is only stored in your own browser.</span>
+    </div>
+  </footer>
+
+  <script>
+    // language toggle only (main.js expects elements this page doesn't have)
+    (function () {
+      var root = document.documentElement;
+      var buttons = document.querySelectorAll('[data-set-lang]');
+      function applyLang(lang) {
+        root.lang = lang;
+        buttons.forEach(function (b) { b.setAttribute('aria-pressed', String(b.dataset.setLang === lang)); });
+      }
+      buttons.forEach(function (b) {
+        b.addEventListener('click', function () {
+          applyLang(b.dataset.setLang);
+          try { localStorage.setItem('lang', b.dataset.setLang); } catch (e) {}
+        });
+      });
+      applyLang(root.lang);
+    })();
+  </script>
+</body>
+</html>
