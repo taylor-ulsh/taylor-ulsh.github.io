@@ -60,11 +60,13 @@
           </div>
         </div>
 
-        <figure class="sql-window">
+        <figure class="sql-window play" id="sql-window">
           <div class="sql-bar">
             <span class="dots" aria-hidden="true"><i></i><i></i><i></i></span>
             <span class="sql-title">monkeys.sql</span>
+            <button type="button" class="sql-run" id="sql-run"><span aria-hidden="true">▶</span> <span lang="da">Kør</span><span lang="en">Run</span></button>
           </div>
+          <pre class="sql-code"><code><span class="line" style="--i:0"><span class="c" lang="da">-- Skal jeg have en abe?</span><span class="c" lang="en">-- Should I get a monkey?</span></span><span class="line" style="--i:1"><span class="k">SELECT</span> field, value</span><span class="line" style="--i:2"><span class="k">FROM</span>   pets</span><span class="line" style="--i:3"><span class="k">WHERE</span>  species = <span class="s">'monkey'</span>;</span></code></pre>
           <div class="sql-results">
             <table>
               <caption class="visually-hidden"><span lang="da">Fakta om aber</span><span lang="en">Monkey facts</span></caption>
@@ -110,6 +112,14 @@
         });
       });
       applyLang(root.lang);
+
+      // SQL window: "Run" replays the animation, same as the main page
+      var sqlWindow = document.getElementById('sql-window');
+      document.getElementById('sql-run').addEventListener('click', function () {
+        sqlWindow.classList.remove('play');
+        void sqlWindow.offsetWidth; // makes the browser notice the removal, so the animation restarts
+        sqlWindow.classList.add('play');
+      });
     })();
   </script>
 </body>
