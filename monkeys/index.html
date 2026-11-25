@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Aber · Taylor Ulsh</title>
+  <title>Monkeys · Taylor Ulsh</title>
   <meta name="robots" content="noindex, nofollow">
   <meta name="theme-color" content="#0a0c10">
   <link rel="icon" href="../favicon.svg" type="image/svg+xml">
@@ -100,6 +100,7 @@
       var buttons = document.querySelectorAll('[data-set-lang]');
       function applyLang(lang) {
         root.lang = lang;
+        document.title = (lang === 'da' ? 'Aber' : 'Monkeys') + ' · Taylor Ulsh';
         buttons.forEach(function (b) { b.setAttribute('aria-pressed', String(b.dataset.setLang === lang)); });
       }
       buttons.forEach(function (b) {
